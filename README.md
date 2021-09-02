@@ -2,7 +2,7 @@
 
 In order run:
 
-1. Make sure you have installed `artillery`.
+1. Make sure you have installed `artillery` globally.
 ```shell
 npm install -g artillery@latest
 ```
