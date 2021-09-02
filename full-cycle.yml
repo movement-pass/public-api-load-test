@@ -1,0 +1,67 @@
+config:
+  target: "https://public-api.movement-pass.com/v1"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+    - duration: 60
+      arrivalRate: 100
+    - duration: 180
+      arrivalRate: 200
+      rampTo: 500
+  processor: "./data-generator.js"
+scenarios:
+  - flow:
+      - function: "generateRandomData"
+      - post:
+          url: "/identity/photo"
+          json:
+            contentType: "image/jpg"
+            filename: "photo.jpg"
+          capture:
+            - json: "$.filename"
+              as: "photoFile"
+      - post:
+          url: "/identity/register"
+          json:
+            mobilePhone: "{{ register.mobilePhone }}"
+            name: "{{ register.name }}"
+            district: "{{ register.district }}"
+            thana: "{{ register.thana }}"
+            dateOfBirth: "{{ register.dateOfBirth }}"
+            gender: "{{ register.gender }}"
+            idType: "{{ register.idType }}"
+            idNumber: "{{ register.idNumber }}"
+            photo: "https://photos.movement-pass.com/{{ photoFile }}"
+      - post:
+          url: "/identity/login"
+          json:
+            mobilePhone: "{{ login.mobilePhone }}"
+            dateOfBirth: "{{ login.dateOfBirth }}"
+          capture:
+            - json: "$.token"
+              as: "token"
+      - post:
+          url: "/passes"
+          headers:
+            authorization: "Bearer {{ token }}"
+          json:
+            fromLocation: "{{ apply.fromLocation }}"
+            toLocation: "{{ apply.toLocation }}"
+            district: "{{ apply.district }}"
+            thana: "{{ apply.thana }}"
+            dateTime: "{{ apply.dateTime }}"
+            durationInHour: "{{ apply.durationInHour }}"
+            type: "{{ apply.type }}"
+            reason: "{{ apply.reason }}"
+            includeVehicle: "{{ apply.includeVehicle }}"
+          capture:
+            - json: "$.id"
+              as: "id"
+      - get:
+          url: "/passes"
+          headers:
+            authorization: "Bearer {{ token }}"
+      - get:
+          url: "/passes/{{ id }}"
+          headers:
+            authorization: "Bearer {{ token }}"

@@ -1,0 +1,10 @@
+{
+  "name": "movement-pass-public-api-load-test",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.10.6",
+    "faker": "^5.5.3"
+  }
+}
