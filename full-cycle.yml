@@ -1,13 +1,8 @@
 config:
   target: "https://public-api.movement-pass.com/v1"
   phases:
-    - duration: 5
-      arrivalRate: 10
-    - duration: 15
-      arrivalRate: 100
-    - duration: 180
-      arrivalRate: 300
-      rampTo: 500
+    - duration: 1
+      arrivalRate: 1
   processor: "./data-generator.js"
 scenarios:
   - flow:

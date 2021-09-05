@@ -1,0 +1,28 @@
+config:
+  target: "https://public-api.movement-pass.com/v1"
+  phases:
+    - duration: 5
+      arrivalRate: 10
+    - duration: 15
+      arrivalRate: 100
+    - duration: 180
+      arrivalRate: 300
+      rampTo: 500
+scenarios:
+  - flow:
+      - post:
+          url: "/passes"
+          headers:
+            authorization: "Bearer <JWT>"
+          json:
+            fromLocation: "Location B"
+            toLocation: "Location B"
+            district: 1017
+            thana: 10161
+            dateTime: "2021-09-06T11:30:00.000Z"
+            durationInHour: 4
+            type: "R"
+            reason: "Grocery Shopping"
+            includeVehicle: true
+            vehicleNo: "Dhaka Metro LA-12-3456"
+            selfDriven: true
