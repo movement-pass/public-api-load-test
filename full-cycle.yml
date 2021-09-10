@@ -59,7 +59,3 @@ scenarios:
           url: "/passes"
           headers:
             authorization: "Bearer {{ token }}"
-      - get:
-          url: "/passes/{{ id }}"
-          headers:
-            authorization: "Bearer {{ token }}"
