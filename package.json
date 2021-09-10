@@ -4,6 +4,8 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.30.0",
+    "@aws-sdk/credential-providers": "^3.30.0",
     "dayjs": "^1.10.6",
     "faker": "^5.5.3"
   }
