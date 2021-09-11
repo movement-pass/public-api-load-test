@@ -40,8 +40,6 @@ scenarios:
               as: "token"
       - post:
           url: "/passes"
-          headers:
-            authorization: "Bearer {{ token }}"
           json:
             fromLocation: "{{ apply.fromLocation }}"
             toLocation: "{{ apply.toLocation }}"
@@ -52,10 +50,17 @@ scenarios:
             type: "{{ apply.type }}"
             reason: "{{ apply.reason }}"
             includeVehicle: "{{ apply.includeVehicle }}"
-          capture:
-            - json: "$.id"
-              as: "id"
+            token: "{{ token }}"
+      - think: 15
       - get:
           url: "/passes"
+          headers:
+            authorization: "Bearer {{ token }}"
+          capture:
+            - json: "$.passes[0].id"
+              as: "id"
+      - get:
+          url: "/passes/{{ id }}"
+          ifTrue: "id"
           headers:
             authorization: "Bearer {{ token }}"
