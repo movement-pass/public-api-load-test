@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
+  "scripts": {
+    "start": "artillery run full-cycle.yml"
+  },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.45.0",
-    "@aws-sdk/credential-providers": "^3.45.0",
-    "dayjs": "^1.10.7",
-    "faker": "^5.5.3"
+    "@aws-sdk/client-dynamodb": "^3.95.0",
+    "@aws-sdk/credential-providers": "^3.95.0",
+    "artillery": "^2.0.0-16",
+    "dayjs": "^1.11.2",
+    "faker": "^6.6.6"
   }
 }
