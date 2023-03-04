@@ -7,8 +7,8 @@
     "start": "artillery run full-cycle.yml"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.281.0",
-    "@aws-sdk/credential-providers": "^3.281.0",
+    "@aws-sdk/client-dynamodb": "^3.284.0",
+    "@aws-sdk/credential-providers": "^3.282.0",
     "artillery": "^2.0.0-30",
     "dayjs": "^1.11.7",
     "faker": "^6.6.6"
