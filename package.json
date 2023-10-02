@@ -9,7 +9,7 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.379.1",
     "@aws-sdk/credential-providers": "^3.379.1",
-    "artillery": "^2.0.0-35",
+    "artillery": "^2.0.0-37",
     "dayjs": "^1.11.9",
     "faker": "^6.6.6"
   }
